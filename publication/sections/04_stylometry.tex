@@ -2,6 +2,12 @@
 
 Connecting disparate individuals across multiple entirely separate channels is the holy grail of computational forensics. Bad actors rotate their operational variables (VPNs, SIM cards), but they cannot easily escape their \textbf{Authorial DNA}.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{../assets/cross_platform_stylometry.png}
+\caption{Three distinct platform manifolds with a perfectly aligned vector mapping linking a single behavioral actor.}
+\end{figure}
+
 To mathematically link disparate entities, we define a \textbf{Stylometric Inter-Identity Distance ($D_{ST}$)}. Let Profile $A$ on Platform $X$ yield a behavioral vector $\vec{\alpha}$, and Profile $B$ on Platform $Y$ yield a vector $\vec{\beta}$.
 \begin{equation}
 D_{ST}(\vec{\alpha}, \vec{\beta}) = \mathbf{W}_{\text{lex}} D_{\text{cos}} + \mathbf{W}_{\text{syn}} D_{\text{JS}} + \mathbf{W}_{\text{temp}} D_{\text{KL}}
