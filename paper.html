@@ -479,6 +479,10 @@
                 $$ \vec{V}_s = \frac{\Delta \vec{v}_{AB}}{\Delta t}, \quad \vec{A}_s = \frac{\partial^2 \vec{v}_{AB}}{\partial t^2} $$
             </div>
             <p>A severe negative drop in vector similarity across an exceptionally tight temporal delta signals a hostile context jump.</p>
+
+            <h3 class="subsection-title">2.4 NLP Categorical Weighting (\(W\))</h3>
+            <p>To prevent false positives from standard conversational shifts, Vanguard applies targeted NLP feature weights before calculating Semantic Divergence (\(D_s\)). The raw vector \(\vec{v}\) is a composite representation of three core linguistic features: <strong>Lexical Choice</strong> (vocabulary rarity), <strong>Syntactic Structure</strong> (part-of-speech ordering), and <strong>Semantic Intent</strong> (contextual sentiment).</p>
+            <p>By heavily weighting the Semantic Intent matrix over raw Lexical choice, the system algorithmically differentiates between a natural subject change and aggressive conversational hijacking. For instance, the isolation anomaly detected in our mockup occurs because the semantic weight matrix exponentially amplifies high-velocity shifts toward imperative, exclusionary phrasing (e.g., "Don't bring anyone else").</p>
         </section>
 
         <section id="architecture">
