@@ -1,0 +1,8 @@
+# Vanguard Local Drafts and Scratchpads
+# Kept safely on the local machine, but hidden from the public GitHub
+docs/
+ui/
+paper/
+mvp/
+prove_image/
+.agents/
