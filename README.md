@@ -1,7 +1,19 @@
 # Privacy-Preserving Behavioral Anomaly Detection across Multi-Channel Manifolds
 
+**Gwendalynn Lim Wan Ting** | Singapore Institute of Technology  
+📧 2504137@sit.singaporetech.edu.sg | 🔗 [linkedin.com/in/gwendalynnlim](https://linkedin.com/in/gwendalynnlim)  
+*Module ICT3506C: Natural Language Processing*
+
+---
+
+> [!NOTE]  
+> **TL;DR for Non-Technical Stakeholders**  
+> Bad actors (like scammers or groomers) hide in massive, noisy group chats. Usually, finding them means reading everyone's private messages—which violates Singapore's PDPA privacy laws.  
+> **Project Vanguard** solves this by converting chat messages into mathematical numbers instantly. It looks at the *shape* and *direction* of the conversation (like someone intensely isolating a target) without ever reading or storing the actual words. We catch the bad guys mathematically, keeping everyone's personal data totally private.
+
 > [!IMPORTANT]
 > 📄 **[Read the Full Interactive Web Paper Here](https://evecount.github.io/ICT3506C_NLP_GwenLim_ProjectVanguard/paper.html)**
+
 ## Project Overview
 This thesis project introduces a zero-knowledge architectural framework designed to detect anomalous behavioral tracking—such as conversational isolation and high-velocity semantic escalation—within high-volume group communications. 
 
