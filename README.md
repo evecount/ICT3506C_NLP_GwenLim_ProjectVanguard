@@ -1,6 +1,6 @@
 # Privacy-Preserving Behavioral Anomaly Detection across Multi-Channel Manifolds
 
-**Gwendalynn Lim Wan Ting** | Singapore Institute of Technology  
+**Gwendalynn Lim Wan Ting** | Honours Applied Computing, Singapore Institute of Technology  
 📧 2504137@sit.singaporetech.edu.sg | 🔗 [linkedin.com/in/gwendalynnlim](https://linkedin.com/in/gwendalynnlim)  
 *Module ICT3506C: Natural Language Processing*
 
