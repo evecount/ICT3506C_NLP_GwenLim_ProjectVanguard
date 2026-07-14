@@ -321,6 +321,45 @@
             margin-top: 0.5rem;
         }
 
+        table th, table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+        
+        .swimlane-chart {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin: 2rem 0;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .swimlane-header {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr;
+            background: #f1f5f9;
+            padding: 1rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #475569;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .swimlane-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr;
+            padding: 1rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #e2e8f0;
+            align-items: center;
+            gap: 1rem;
+        }
+        .swimlane-row:last-child {
+            border-bottom: none;
+        }
+
         .dash-alert {
             padding: 1rem;
             border-radius: 8px;
@@ -530,7 +569,38 @@
 
             <h3 class="subsection-title">2.4 NLP Categorical Weighting (\(W\))</h3>
             <p>To prevent false positives from standard conversational shifts, Vanguard applies targeted NLP feature weights before calculating Semantic Divergence (\(D_s\)). The raw vector \(\vec{v}\) is a composite representation of three core linguistic features: <strong>Lexical Choice</strong> (vocabulary rarity), <strong>Syntactic Structure</strong> (part-of-speech ordering), and <strong>Semantic Intent</strong> (contextual sentiment).</p>
-            <p>By heavily weighting the Semantic Intent matrix over raw Lexical choice, the system algorithmically differentiates between a natural subject change and aggressive conversational hijacking. For instance, the isolation anomaly detected in our mockup occurs because the semantic weight matrix exponentially amplifies high-velocity shifts toward imperative, exclusionary phrasing (e.g., "Don't bring anyone else").</p>
+            <p>By heavily weighting the Semantic Intent matrix over raw Lexical choice, the system algorithmically differentiates between a natural subject change and aggressive conversational hijacking. For instance, the isolation anomaly detected in our mockup occurs because the semantic weight matrix exponentially amplifies high-velocity shifts toward imperative, exclusionary phrasing.</p>
+
+            <div class="swimlane-chart">
+                <div class="swimlane-header">
+                    <div>Segment Vector (\(\vec{v}\))</div>
+                    <div>Lexical (Vocabulary)</div>
+                    <div>Syntactic (Structure)</div>
+                    <div>Semantic (Intent)</div>
+                    <div>Output Multiplier (\(W\))</div>
+                </div>
+                <div class="swimlane-row">
+                    <div style="font-family: var(--font-mono); font-size: 0.85rem;">"Are you online?"</div>
+                    <div style="color: #64748b;">Low (Common)</div>
+                    <div style="color: #64748b;">Low (Query)</div>
+                    <div style="color: #64748b;">Neutral (Check status)</div>
+                    <div style="color: #10b981; font-weight: bold;">0.8x (Baseline)</div>
+                </div>
+                <div class="swimlane-row">
+                    <div style="font-family: var(--font-mono); font-size: 0.85rem;">"Don't bring anyone else."</div>
+                    <div style="color: #64748b;">Medium (Common)</div>
+                    <div style="color: #ef4444; font-weight: bold;">High (Imperative)</div>
+                    <div style="color: #ef4444; font-weight: bold;">Critical (Exclusionary)</div>
+                    <div style="color: #ef4444; font-weight: bold;">4.5x (Escalation)</div>
+                </div>
+                <div class="swimlane-row">
+                    <div style="font-family: var(--font-mono); font-size: 0.85rem;">"Leave them out of this."</div>
+                    <div style="color: #64748b;">Low (Common)</div>
+                    <div style="color: #ef4444; font-weight: bold;">High (Directive)</div>
+                    <div style="color: #ef4444; font-weight: bold;">Critical (Isolation)</div>
+                    <div style="color: #ef4444; font-weight: bold;">5.2x (Severe Anomaly)</div>
+                </div>
+            </div>
         </section>
 
         <section id="architecture">
