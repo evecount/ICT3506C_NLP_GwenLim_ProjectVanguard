@@ -230,6 +230,119 @@
             text-decoration: none;
         }
 
+        /* Vanguard UI Mockup */
+        .mockup-container {
+            display: flex;
+            gap: 1rem;
+            margin: 3rem 0;
+            font-family: var(--font-ui);
+            height: 400px;
+            background: #0f172a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            color: #fff;
+        }
+
+        .mockup-chat {
+            flex: 1;
+            background: #1e293b;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #334155;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mockup-header {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .chat-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            animation: scrollUp 10s infinite linear;
+        }
+
+        .chat-msg {
+            background: #334155;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            max-width: 80%;
+            position: relative;
+        }
+        
+        .chat-msg.target {
+            background: #0ea5e9;
+            align-self: flex-end;
+        }
+
+        .chat-msg.actor {
+            background: #ef4444;
+            align-self: flex-start;
+            border-left: 4px solid #b91c1c;
+        }
+
+        .chat-msg .user {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .mockup-dash {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .dash-card {
+            background: #1e293b;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .dash-value {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: #38bdf8;
+            margin-top: 0.5rem;
+        }
+
+        .dash-alert {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes scrollUp {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
         /* Mobile responsiveness */
         @media (max-width: 1024px) {
             body {
@@ -374,6 +487,57 @@
             <p>Real names, phone identifiers, and structural message content are parsed purely in-memory using an ephemeral data stream loop. Standard system strings are instantly converted into irreversible cryptographic hashes, \(\text{SHA-256}(\text{User\_ID} + \text{Salt})\).</p>
             <p>Text blocks are immediately converted to numerical vectors via a localized, containerized Transformer engine at the ingestion gateway. The raw textual string is immediately purged from system memory loops post-vectorization. The database layer houses exclusively floating-point coordinate arrays (\(\mathbb{R}^d\)), ensuring that even in the event of a theoretical infrastructure compromise, no personal data leakage can occur.</p>
         </section>
+
+        <!-- UI MOCKUP -->
+        <div class="mockup-container">
+            <!-- Left: Chat Ingestion -->
+            <div class="mockup-chat">
+                <div class="mockup-header">RAW INGESTION (NODE 482)</div>
+                <div class="chat-feed">
+                    <div class="chat-msg target">
+                        <span class="user">hash_8f92</span>
+                        Are we still meeting at the same spot later?
+                    </div>
+                    <div class="chat-msg">
+                        <span class="user">hash_1a3b</span>
+                        Yeah, I think so.
+                    </div>
+                    <div class="chat-msg actor">
+                        <span class="user">hash_9x99 (Isolator)</span>
+                        Don't bring anyone else. Just you. We need to talk alone.
+                    </div>
+                    <div class="chat-msg target">
+                        <span class="user">hash_8f92</span>
+                        Okay, sure.
+                    </div>
+                    <div class="chat-msg actor">
+                        <span class="user">hash_9x99 (Isolator)</span>
+                        I'm serious. If you tell them, the deal is off. Understood?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Vanguard Dashboard -->
+            <div class="mockup-dash">
+                <div class="mockup-header">VANGUARD ANALYTICS ENGINE</div>
+                
+                <div class="dash-card">
+                    <div style="font-size: 0.85rem; color: #94a3b8;">Current Baseline (\(\vec{\mu}_t\))</div>
+                    <div class="dash-value">[0.42, 0.11, -0.89, 0.33, ...]</div>
+                </div>
+
+                <div class="dash-card">
+                    <div style="font-size: 0.85rem; color: #94a3b8;">Targeting Asymmetry (\(I_\alpha\)) for hash_9x99</div>
+                    <div class="dash-value" style="color: #ef4444;">8.94 (Critical Threshold > 3.0)</div>
+                </div>
+
+                <div class="dash-alert">
+                    ⚠️ ISOLATION ANOMALY DETECTED<br>
+                    <span style="font-size: 0.85rem; opacity: 0.8; font-family: var(--font-mono);">Action: Flag vector trajectory for review.</span>
+                </div>
+            </div>
+        </div>
+        <!-- END MOCKUP -->
 
         <section id="stylometry">
             <h2 class="section-title">4. Cross-Platform Stylometry</h2>
