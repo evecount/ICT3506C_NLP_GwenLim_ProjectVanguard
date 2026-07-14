@@ -266,10 +266,12 @@
         }
 
         .chat-feed {
+            flex: 1;
+            padding: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            animation: scrollUp 10s infinite linear;
+            gap: 0.8rem;
+            animation: scrollUp 30s infinite;
         }
 
         .chat-msg {
@@ -797,56 +799,5 @@
         </footer>
     </main>
 
-    <script>
-        // Sync Chat pop-ins with the 30s Vanguard Analytics Engine CSS cycle
-        (function() {
-            const feed = document.getElementById("chat-feed");
-            const dynamicMsgs = document.querySelectorAll(".dynamic-msg");
-            
-            if (!feed || dynamicMsgs.length === 0) return;
-
-            // Times in seconds (out of 30) when each message should pop in
-            const popTimings = [
-                2.0, 4.0, 6.0,          // Ambient chat
-                10.0, 12.0, 14.0,       // Shark enters
-                17.0, 19.0, 21.0, 22.0, // Escalation
-                23.0, 24.0, 25.0,       // Critical Isolation
-                26.5                    // Rescuer disrupts
-            ];
-
-            function startChatCycle() {
-                // Hide all dynamic messages
-                dynamicMsgs.forEach(msg => {
-                    msg.style.display = "none";
-                    msg.classList.remove("pop-anim");
-                });
-                
-                // Instantly jump to top for cycle reset
-                feed.style.scrollBehavior = 'auto';
-                feed.scrollTop = 0;
-                feed.style.scrollBehavior = 'smooth';
-
-                // Schedule pop-ins
-                dynamicMsgs.forEach((msg, index) => {
-                    if (index < popTimings.length) {
-                        setTimeout(() => {
-                            msg.style.display = "block";
-                            // Trigger reflow
-                            void msg.offsetWidth;
-                            msg.classList.add("pop-anim");
-                            
-                            // Auto-scroll to bottom like a real chat app
-                            feed.scrollTo({ top: feed.scrollHeight, behavior: 'smooth' });
-                        }, popTimings[index] * 1000);
-                    }
-                });
-            }
-
-            // Start immediately
-            startChatCycle();
-            // Loop exactly every 30 seconds to sync with CSS keyframes
-            setInterval(startChatCycle, 30000);
-        })();
-    </script>
 </body>
 </html>
