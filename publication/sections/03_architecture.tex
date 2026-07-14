@@ -1,0 +1,7 @@
+\section{In-Memory Anonymization Architecture}
+
+To natively satisfy the \textbf{Purpose Limitation, Data Minimization, and Protection Obligations} under the PDPA, the system implements a strict \textbf{Zero-Knowledge Architecture}.
+
+Real names, phone identifiers, and structural message content are parsed purely in-memory using an ephemeral data stream loop. Standard system strings are instantly converted into irreversible cryptographic hashes, $\text{SHA-256}(\text{User\_ID} + \text{Salt})$. 
+
+Text blocks are immediately converted to numerical vectors via a localized, containerized Transformer engine at the ingestion gateway. The raw textual string is immediately purged from system memory loops post-vectorization. The database layer houses exclusively floating-point coordinate arrays ($\mathbb{R}^d$), ensuring that even in the event of a theoretical infrastructure compromise, no personal data leakage can occur.

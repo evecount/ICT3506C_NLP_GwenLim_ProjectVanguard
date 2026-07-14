@@ -1,0 +1,9 @@
+\section{Cross-Platform Stylometry}
+
+Connecting disparate individuals across multiple entirely separate channels is the holy grail of computational forensics. Bad actors rotate their operational variables (VPNs, SIM cards), but they cannot easily escape their \textbf{Authorial DNA}.
+
+To mathematically link disparate entities, we define a \textbf{Stylometric Inter-Identity Distance ($D_{ST}$)}. Let Profile $A$ on Platform $X$ yield a behavioral vector $\vec{\alpha}$, and Profile $B$ on Platform $Y$ yield a vector $\vec{\beta}$.
+\begin{equation}
+D_{ST}(\vec{\alpha}, \vec{\beta}) = \mathbf{W}_{\text{lex}} D_{\text{cos}} + \mathbf{W}_{\text{syn}} D_{\text{JS}} + \mathbf{W}_{\text{temp}} D_{\text{KL}}
+\end{equation}
+Where $D_{\text{cos}}$ maps semantic lexical alignment, $D_{\text{JS}}$ (Jensen-Shannon divergence) measures structural distance between syntactic distributions, and $D_{\text{KL}}$ (Kullback-Leibler divergence) calculates relative entropy difference between temporal operational distributions.
