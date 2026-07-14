@@ -15,6 +15,13 @@
 > 📄 **[Read the Full Interactive Web Paper Here](https://evecount.github.io/ICT3506C_NLP_GwenLim_ProjectVanguard/paper.html)**
 
 ## Project Overview
+
+<p align="center">
+  <img src="./assets/topology_anomaly.png" alt="Topological Anomaly" width="45%">
+  &nbsp; &nbsp; &nbsp;
+  <img src="./assets/cross_platform_stylometry.png" alt="Cross-Platform Stylometry" width="45%">
+</p>
+
 This thesis project introduces a zero-knowledge architectural framework designed to detect anomalous behavioral tracking—such as conversational isolation and high-velocity semantic escalation—within high-volume group communications. 
 
 To natively honor the **Singapore Personal Data Protection Act (PDPA)**, this system operates under strict data minimization parameters, converting volatile textual strings into mathematical vectors ($\mathbb{R}^d$) at the ingestion gateway before immediately purging plaintext records.
