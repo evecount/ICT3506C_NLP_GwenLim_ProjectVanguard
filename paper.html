@@ -271,7 +271,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
-            animation: scrollUp 30s infinite;
+            animation: scrollUp 60s infinite linear;
         }
 
         .chat-msg {
@@ -377,7 +377,7 @@
             border: 1px solid #ef4444;
             color: #ef4444;
             opacity: 0;
-            animation: alertRedFade 30s infinite;
+            animation: alertRedFade 60s infinite;
         }
 
         .alert-green {
@@ -385,18 +385,18 @@
             border: 1px solid #22c55e;
             color: #22c55e;
             opacity: 0;
-            animation: alertGreenFade 30s infinite;
+            animation: alertGreenFade 60s infinite;
         }
 
         .dash-baseline::after {
             content: "[0.42, 0.11, -0.89, 0.33, ...]";
-            animation: fluctuateBaseline 15s infinite;
+            animation: fluctuateBaseline 30s infinite;
         }
 
         .dash-asymmetry::after {
             content: "1.24 (Normal)";
             color: #38bdf8;
-            animation: fluctuateAsymmetry 15s infinite;
+            animation: fluctuateAsymmetry 30s infinite;
         }
 
         @keyframes scrollUp {
