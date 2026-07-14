@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Vanguard | Behavioral Anomaly Detection</title>
-    <!-- Modern Fonts -->
+    
+    <!-- Modern Academic Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@300;400;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     
     <!-- MathJax for LaTeX Rendering -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -15,14 +16,14 @@
 
     <style>
         :root {
-            --bg-color: #0f111a;
-            --surface-color: #1a1d2d;
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --accent-color: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.2);
-            --border-color: #334155;
-            --font-main: 'Inter', -apple-system, sans-serif;
+            --bg-color: #fafafa;
+            --surface-color: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --accent-color: #0366d6;
+            --border-color: #e1e4e8;
+            --font-body: 'Merriweather', serif;
+            --font-ui: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
@@ -33,87 +34,157 @@
         }
 
         body {
-            font-family: var(--font-main);
+            font-family: var(--font-body);
             background-color: var(--bg-color);
             color: var(--text-primary);
-            line-height: 1.7;
-            font-size: 18px;
+            line-height: 1.8;
+            font-size: 17px;
             -webkit-font-smoothing: antialiased;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 800px;
+        /* Sidebar: Interactive Rubric */
+        .sidebar {
+            background-color: var(--surface-color);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            font-family: var(--font-ui);
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .rubric-item {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .rubric-item input[type="checkbox"] {
+            margin-top: 5px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        .rubric-content {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .rubric-content strong {
+            display: block;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .rubric-content a {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .rubric-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Paper Content */
+        .main-content {
+            padding: 4rem;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 4rem 2rem;
         }
 
         header {
             text-align: center;
             margin-bottom: 4rem;
-            animation: fadeIn 1s ease-out;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-family: var(--font-ui);
+            font-size: 2.2rem;
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            color: #000;
         }
 
         .authors {
+            font-family: var(--font-ui);
             font-size: 1.1rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
         }
 
         .author-block {
-            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .author-block strong {
+            color: var(--text-primary);
         }
 
         .abstract {
             background: var(--surface-color);
-            padding: 2rem;
-            border-radius: 12px;
+            padding: 2.5rem;
             border: 1px solid var(--border-color);
-            box-shadow: 0 8px 32px var(--accent-glow);
             font-size: 1.05rem;
             margin-bottom: 3rem;
-            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
         .abstract strong {
-            color: var(--accent-color);
+            font-family: var(--font-ui);
+            color: #000;
             text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 1px;
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
+        h2.section-title {
+            font-family: var(--font-ui);
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-top: 3.5rem;
             margin-bottom: 1.5rem;
-            color: #fff;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
+            color: #000;
         }
 
-        h3 {
-            font-size: 1.3rem;
+        h3.subsection-title {
+            font-family: var(--font-ui);
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             margin-bottom: 1rem;
-            color: #f1f5f9;
+            color: #222;
         }
 
         p {
             margin-bottom: 1.5rem;
-            color: var(--text-secondary);
+            text-align: justify;
         }
 
         .math-block {
@@ -129,8 +200,8 @@
             border-collapse: collapse;
             margin: 2rem 0;
             background: var(--surface-color);
-            border-radius: 8px;
-            overflow: hidden;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
         }
 
         th, td {
@@ -140,39 +211,93 @@
         }
 
         th {
-            background: rgba(255, 255, 255, 0.05);
+            background: #f8f9fa;
             font-weight: 600;
-            color: #fff;
+            color: #000;
         }
 
-        code {
-            font-family: var(--font-mono);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-size: 0.9em;
-            color: var(--accent-color);
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
-        a {
+        footer a {
             color: var(--accent-color);
             text-decoration: none;
-            transition: all 0.2s;
         }
 
-        a:hover {
-            text-decoration: underline;
-            text-shadow: 0 0 8px var(--accent-glow);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Mobile responsiveness */
+        @media (max-width: 1024px) {
+            body {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: relative;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .main-content {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <!-- INTERACTIVE GRADING RUBRIC SIDEBAR -->
+    <aside class="sidebar">
+        <h2>Evaluator Rubric</h2>
+        <p style="font-size: 0.85rem; margin-bottom: 1.5rem;">Use this interactive checklist to verify ICT3506C module competencies.</p>
+        
+        <div class="rubric-item">
+            <input type="checkbox" id="comp1">
+            <div class="rubric-content">
+                <label for="comp1"><strong>Text Processing</strong> (Tokenization, Cleaning, Normalization)</label>
+                <a href="#architecture">↳ Jump to Proof</a>
+            </div>
+        </div>
+
+        <div class="rubric-item">
+            <input type="checkbox" id="comp2">
+            <div class="rubric-content">
+                <label for="comp2"><strong>Representations</strong> (Word Embeddings & Vectors)</label>
+                <a href="#methodology">↳ Jump to Proof</a>
+            </div>
+        </div>
+
+        <div class="rubric-item">
+            <input type="checkbox" id="comp3">
+            <div class="rubric-content">
+                <label for="comp3"><strong>Analysis</strong> (Syntax and Semantic Analysis)</label>
+                <a href="#methodology-c">↳ Jump to Proof</a>
+            </div>
+        </div>
+
+        <div class="rubric-item">
+            <input type="checkbox" id="comp4">
+            <div class="rubric-content">
+                <label for="comp4"><strong>Applications</strong> (Text Classification Systems)</label>
+                <a href="#validation">↳ Jump to Proof</a>
+            </div>
+        </div>
+
+        <div class="rubric-item">
+            <input type="checkbox" id="comp5">
+            <div class="rubric-content">
+                <label for="comp5"><strong>Implementation</strong> (Cross-Platform Execution)</label>
+                <a href="#stylometry">↳ Jump to Proof</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN PAPER CONTENT -->
+    <main class="main-content">
         <header>
             <h1>Non-Invasive Behavioral Anomaly Detection & Privacy-Preserving Structural Modeling in Vector Spaces</h1>
             <div class="authors">
@@ -189,7 +314,7 @@
                     <span>Advanced Agentic Architecture</span>
                 </div>
             </div>
-            <p>July 2026</p>
+            <p style="font-family: var(--font-ui); color: var(--text-secondary); text-align: center;">July 2026</p>
         </header>
 
         <div class="abstract">
@@ -198,16 +323,16 @@
         </div>
 
         <section id="introduction">
-            <h2>1. Introduction</h2>
+            <h2 class="section-title">1. Introduction</h2>
             <p>In high-velocity group communication networks (such as Telegram or Discord), bad actors often exploit the sheer volume of ambient noise to execute targeted scouting, conversational isolation, or malicious grooming. Traditional Natural Language Processing (NLP) solutions rely on sweeping chat logs and processing raw text, which inherently risks violating strict data governance laws, particularly the Singapore Personal Data Protection Act (PDPA).</p>
             <p>This paper introduces <em>Project Vanguard</em>, an architectural pipeline that replaces deterministic rule-based NLP decoding with a statistical and topological framework. By modeling communication dynamics as localized vector geometries and categorical structures, the system detects anomalous interaction topologies without reading or storing explicit chat data.</p>
         </section>
 
         <section id="methodology">
-            <h2>2. Axiomatic Mathematical Framework</h2>
+            <h2 class="section-title">2. Axiomatic Mathematical Framework</h2>
             <p>To isolate malicious behavioral tracking without processing empirical textual histories, the system establishes three foundational axioms governing human interaction spaces.</p>
 
-            <h3>2.1 Axiom A: The Ambient Semantic Baseline</h3>
+            <h3 class="subsection-title">2.1 Axiom A: The Ambient Semantic Baseline</h3>
             <p>In any stabilized communication channel, the general population generates conversation that centers around a moving average vector space, defining the <strong>Ambient Semantic Baseline</strong> \(\vec{\mu}_t\) within a specific temporal window \(t\).</p>
             <p>Let a window contain \(N\) messages, where each message token sequence is mapped via a local embedding function \(\phi(\text{text}) \to \vec{v} \in \mathbb{R}^d\). The baseline is defined as:</p>
             
@@ -221,7 +346,7 @@
                 $$ D_s(\vec{v}_k, \vec{\mu}_t) = 1 - \frac{\vec{v}_k \cdot \vec{\mu}_t}{\|\vec{v}_k\| \|\vec{\mu}_t\|} $$
             </div>
 
-            <h3>2.2 Axiom B: Morphism Directedness and Network Asymmetry</h3>
+            <h3 class="subsection-title">2.2 Axiom B: Morphism Directedness and Network Asymmetry</h3>
             <p>We frame the communication network as a Category \(\mathbf{C}\) where objects \(\text{Ob}(\mathbf{C})\) are network participants, and morphisms \(\text{Hom}(A, B)\) are directed text-vector communications from node \(A\) to node \(B\).</p>
             <p>We define the <strong>Targeting Asymmetry Index (\(I_\alpha\))</strong> for a specific node \(A\) over a historical horizon as the ratio of outbound structural intensity directed at a single target node \(B\) relative to inbound structural reciprocity:</p>
             
@@ -230,7 +355,7 @@
             </div>
             <p>where \(\epsilon\) is a smoothing parameter minimizing division-by-zero errors.</p>
 
-            <h3>2.3 Axiom C: Semantic Velocity and Acceleration Gradients</h3>
+            <h3 class="subsection-title" id="methodology-c">2.3 Axiom C: Semantic Velocity and Acceleration Gradients</h3>
             <p>Let the semantic vector of a sequence of interactions from node \(A\) to node \(B\) at sequential timestamps \(t_1, \dots, t_n\) be denoted as \(\vec{v}_{AB}(t)\). The <strong>Semantic Velocity (\(\vec{V}_s\))</strong> and <strong>Acceleration (\(\vec{A}_s\))</strong> are:</p>
             
             <div class="math-block">
@@ -240,14 +365,14 @@
         </section>
 
         <section id="architecture">
-            <h2>3. In-Memory Anonymization Architecture</h2>
+            <h2 class="section-title">3. In-Memory Anonymization Architecture</h2>
             <p>To natively satisfy the <strong>Purpose Limitation, Data Minimization, and Protection Obligations</strong> under the PDPA, the system implements a strict <strong>Zero-Knowledge Architecture</strong>.</p>
             <p>Real names, phone identifiers, and structural message content are parsed purely in-memory using an ephemeral data stream loop. Standard system strings are instantly converted into irreversible cryptographic hashes, \(\text{SHA-256}(\text{User\_ID} + \text{Salt})\).</p>
             <p>Text blocks are immediately converted to numerical vectors via a localized, containerized Transformer engine at the ingestion gateway. The raw textual string is immediately purged from system memory loops post-vectorization. The database layer houses exclusively floating-point coordinate arrays (\(\mathbb{R}^d\)), ensuring that even in the event of a theoretical infrastructure compromise, no personal data leakage can occur.</p>
         </section>
 
         <section id="stylometry">
-            <h2>4. Cross-Platform Stylometry</h2>
+            <h2 class="section-title">4. Cross-Platform Stylometry</h2>
             <p>Connecting disparate individuals across multiple entirely separate channels is the holy grail of computational forensics. Bad actors rotate their operational variables (VPNs, SIM cards), but they cannot easily escape their <strong>Authorial DNA</strong>.</p>
             <p>To mathematically link disparate entities, we define a <strong>Stylometric Inter-Identity Distance (\(D_{ST}\))</strong>. Let Profile \(A\) on Platform \(X\) yield a behavioral vector \(\vec{\alpha}\), and Profile \(B\) on Platform \(Y\) yield a vector \(\vec{\beta}\).</p>
             
@@ -259,7 +384,7 @@
         </section>
 
         <section id="validation">
-            <h2>5. Procedural Synthetic Data Validation</h2>
+            <h2 class="section-title">5. Procedural Synthetic Data Validation</h2>
             <p>To validate the theoretical boundary thresholds without ingesting regulated production chats, the platform utilizes a procedural simulator across three modeled archetypes:</p>
             
             <table>
@@ -289,11 +414,11 @@
         </section>
 
         <section id="conclusion">
-            <h2>6. Conclusion</h2>
+            <h2 class="section-title">6. Conclusion</h2>
             <p>This framework successfully abstracts high-velocity communication dynamics into localized topological manifolds, enabling predictive counter-adversarial tracking while maintaining absolute compliance with privacy statutes.</p>
         </section>
 
-        <footer style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary); font-size: 0.95rem;">
+        <footer>
             <p><strong>Project Vanguard</strong> was submitted in partial fulfillment of the requirements for <br>
             <strong>ICT3506C Natural Language Processing</strong> at the Singapore Institute of Technology (July 2026).</p>
             <p style="margin-top: 1rem;">
@@ -301,6 +426,6 @@
                 <a href="https://linkedin.com/in/gwendalynnlim" target="_blank">linkedin.com/in/gwendalynnlim</a>
             </p>
         </footer>
-    </div>
+    </main>
 </body>
 </html>
