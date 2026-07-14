@@ -1,7 +1,7 @@
 # Privacy-Preserving Behavioral Anomaly Detection across Multi-Channel Manifolds
 
 > [!IMPORTANT]
-> 📄 **[Read the Full Interactive Web Paper Here](./paper.html)**
+> 📄 **[Read the Full Interactive Web Paper Here](https://evecount.github.io/ICT3506C_NLP_GwenLim_ProjectVanguard/paper.html)**
 ## Project Overview
 This thesis project introduces a zero-knowledge architectural framework designed to detect anomalous behavioral tracking—such as conversational isolation and high-velocity semantic escalation—within high-volume group communications. 
 
