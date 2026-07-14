@@ -329,18 +329,46 @@
             border-radius: 8px;
             text-align: center;
             font-weight: 600;
-            animation: pulse 2s infinite;
+            opacity: 0;
+            animation: alertFadeIn 15s infinite;
+        }
+
+        .dash-baseline::after {
+            content: "[0.42, 0.11, -0.89, 0.33, ...]";
+            animation: fluctuateBaseline 15s infinite;
+        }
+
+        .dash-asymmetry::after {
+            content: "1.24 (Normal)";
+            color: #38bdf8;
+            animation: fluctuateAsymmetry 15s infinite;
         }
 
         @keyframes scrollUp {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
+            0% { transform: translateY(50%); }
+            100% { transform: translateY(-150%); }
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        @keyframes fluctuateBaseline {
+            0%, 20% { content: "[0.42, 0.11, -0.89, 0.33, ...]"; }
+            21%, 40% { content: "[0.41, 0.13, -0.87, 0.35, ...]"; }
+            41%, 60% { content: "[0.38, 0.18, -0.81, 0.40, ...]"; }
+            61%, 80% { content: "[0.22, 0.34, -0.65, 0.55, ...]"; }
+            81%, 100% { content: "[-0.15, 0.62, -0.33, 0.81, ...]"; }
+        }
+
+        @keyframes fluctuateAsymmetry {
+            0%, 20% { content: "1.24 (Normal)"; color: #38bdf8; }
+            21%, 40% { content: "1.89 (Normal)"; color: #38bdf8; }
+            41%, 60% { content: "2.75 (Elevated)"; color: #facc15; }
+            61%, 80% { content: "4.12 (High)"; color: #f97316; }
+            81%, 100% { content: "8.94 (Critical Threshold > 3.0)"; color: #ef4444; }
+        }
+
+        @keyframes alertFadeIn {
+            0%, 80% { opacity: 0; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+            81%, 90% { opacity: 1; box-shadow: 0 0 0 10px rgba(239, 68, 68, 0.2); }
+            91%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
         /* Mobile responsiveness */
@@ -497,26 +525,49 @@
             <!-- Left: Chat Ingestion -->
             <div class="mockup-chat">
                 <div class="mockup-header">RAW INGESTION (NODE 482)</div>
-                <div class="chat-feed">
+                <div class="chat-feed" style="animation-duration: 15s;">
+                    <!-- Normal Ambient Chat -->
+                    <div class="chat-msg">
+                        <span class="user">hash_3c4d</span>
+                        Did anyone finish the assignment yet?
+                    </div>
                     <div class="chat-msg target">
                         <span class="user">hash_8f92</span>
-                        Are we still meeting at the same spot later?
+                        I'm about halfway through. It's tough.
                     </div>
                     <div class="chat-msg">
                         <span class="user">hash_1a3b</span>
-                        Yeah, I think so.
-                    </div>
-                    <div class="chat-msg actor">
-                        <span class="user">hash_9x99 (Isolator)</span>
-                        Don't bring anyone else. Just you. We need to talk alone.
+                        Same. Let's compare notes later.
                     </div>
                     <div class="chat-msg target">
                         <span class="user">hash_8f92</span>
-                        Okay, sure.
+                        Are we still meeting at the library?
+                    </div>
+                    <div class="chat-msg">
+                        <span class="user">hash_1a3b</span>
+                        Yeah, around 4pm.
+                    </div>
+                    
+                    <!-- Anomaly Escalation -->
+                    <div class="chat-msg actor">
+                        <span class="user">hash_9x99 (Isolator)</span>
+                        Don't bring anyone else to the library. Just you. We need to talk alone.
+                    </div>
+                    <div class="chat-msg target">
+                        <span class="user">hash_8f92</span>
+                        Okay, sure. Why?
+                    </div>
+                    <div class="chat-msg actor">
+                        <span class="user">hash_9x99 (Isolator)</span>
+                        I said just you. Leave hash_1a3b out of this. 
                     </div>
                     <div class="chat-msg actor">
                         <span class="user">hash_9x99 (Isolator)</span>
                         I'm serious. If you tell them, the deal is off. Understood?
+                    </div>
+                    <div class="chat-msg actor">
+                        <span class="user">hash_9x99 (Isolator)</span>
+                        Don't even reply to them in the main chat anymore.
                     </div>
                 </div>
             </div>
@@ -527,12 +578,12 @@
                 
                 <div class="dash-card">
                     <div style="font-size: 0.85rem; color: #94a3b8;">Current Baseline (\(\vec{\mu}_t\))</div>
-                    <div class="dash-value">[0.42, 0.11, -0.89, 0.33, ...]</div>
+                    <div class="dash-value dash-baseline"></div>
                 </div>
 
                 <div class="dash-card">
                     <div style="font-size: 0.85rem; color: #94a3b8;">Targeting Asymmetry (\(I_\alpha\)) for hash_9x99</div>
-                    <div class="dash-value" style="color: #ef4444;">8.94 (Critical Threshold > 3.0)</div>
+                    <div class="dash-value dash-asymmetry"></div>
                 </div>
 
                 <div class="dash-alert">
