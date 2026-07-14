@@ -799,10 +799,12 @@
 
     <script>
         // Sync Chat pop-ins with the 30s Vanguard Analytics Engine CSS cycle
-        document.addEventListener("DOMContentLoaded", () => {
+        (function() {
             const feed = document.getElementById("chat-feed");
             const dynamicMsgs = document.querySelectorAll(".dynamic-msg");
             
+            if (!feed || dynamicMsgs.length === 0) return;
+
             // Times in seconds (out of 30) when each message should pop in
             const popTimings = [
                 2.0, 4.0, 6.0,          // Ambient chat
@@ -826,15 +828,17 @@
 
                 // Schedule pop-ins
                 dynamicMsgs.forEach((msg, index) => {
-                    setTimeout(() => {
-                        msg.style.display = "block";
-                        // Trigger reflow
-                        void msg.offsetWidth;
-                        msg.classList.add("pop-anim");
-                        
-                        // Auto-scroll to bottom like a real chat app
-                        feed.scrollTo({ top: feed.scrollHeight, behavior: 'smooth' });
-                    }, popTimings[index] * 1000);
+                    if (index < popTimings.length) {
+                        setTimeout(() => {
+                            msg.style.display = "block";
+                            // Trigger reflow
+                            void msg.offsetWidth;
+                            msg.classList.add("pop-anim");
+                            
+                            // Auto-scroll to bottom like a real chat app
+                            feed.scrollTo({ top: feed.scrollHeight, behavior: 'smooth' });
+                        }, popTimings[index] * 1000);
+                    }
                 });
             }
 
@@ -842,7 +846,7 @@
             startChatCycle();
             // Loop exactly every 30 seconds to sync with CSS keyframes
             setInterval(startChatCycle, 30000);
-        });
+        })();
     </script>
 </body>
 </html>
